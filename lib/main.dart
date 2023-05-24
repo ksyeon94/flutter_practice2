@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -10,30 +10,64 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'layout_practice',
       theme: ThemeData(backgroundColor: Colors.yellow),
-      home: home(),
+      home: const HomePageWidget(),
     );
   }
 }
 
-class home extends StatelessWidget {
-  const home({Key? key}) : super(key: key);
+class HomePageWidget extends StatelessWidget {
+  const HomePageWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(backgroundColor: Colors.green,
-      title: Text('MainAxisAlignment.start',style: TextStyle(color: Colors.white, fontSize: 20),),),
-      body: Container( margin: EdgeInsets.all(2),
-        decoration: ShapeDecoration(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-          color: Colors.yellow
+      appBar: AppBar(
+        backgroundColor: Colors.green,
+        title: const Text(
+          'IntrinsicWidth',
+          style: TextStyle(color: Colors.white, fontSize: 20),
+        ),
+      ),
+      body: Center(
+        child: IntrinsicWidth(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              ElevatedButton(
+                onPressed: () {},
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.grey[300]),
+                ),
+                child: const Text(
+                  'Short',
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.grey[300]),
+                ),
+                child: const Text(
+                  'A bit Longer',
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.grey[300]),
+                ),
+                child: const Text(
+                  'The Longest text button',
+                  style: TextStyle(color: Colors.black),
+                ),
+              )
+            ],
           ),
-
-        child: Column(mainAxisAlignment: MainAxisAlignment.start, 
-          children: [Icon(Icons.star, size:50,),
-            Icon(Icons.star, size:50,),
-            Icon(Icons.star, size:50,)],),
-      )
+        ),
+      ),
     );
   }
 }
